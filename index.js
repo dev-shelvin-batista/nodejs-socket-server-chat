@@ -17,20 +17,20 @@ let users = [];
 socketIO.on('connection', (socket) => {
     console.log(`⚡: ${socket.id} usuario conectado!`);
   
-    // Evento de enviar un mensaje
+    // Send message event
     socket.on(`message`, (data) => {
         console.log(`⚡: mensaje enviado!`);
         
         socketIO.emit(`messageResponse-${data.to}`, data);
     });
 
-    // Evento de notificar cuando un usuario esta escribiendo
+    // Event to notify when a user is typing
     socket.on('typing', (data) => {
         console.log(`⚡: usuario esta escribiendo!`);
         socketIO.emit(`typingResponse`, data);
     });
 
-    // Evento de notificar un usuario que inicias sesión en el servidor
+    // Event to notify a user that they are logging in to the server.
     socket.on('newUser', (data) => {
         console.log(`⚡: usuario conectado!`);
     });
@@ -48,7 +48,7 @@ socketIO.on('connection', (socket) => {
         socketIO.emit('newUserResponse', {user:data, list: users});
     });
     
-    // Evento de notificar un usuario que cierra sesión
+    // Event to notify a user who logs out
     socket.on('disconnectUser', (data) => {
         console.log(`⚡: usuario desconectado!`);
         const user = users.find((user) => user.socketID === data.socketID);
@@ -59,7 +59,7 @@ socketIO.on('connection', (socket) => {
         socketIO.emit('newUserResponse',  {user:data, list: users});
     });
   
-    // Evento de notificar un usuario que cierra sesión en el servidor
+    // Event to notify a user who disconnects from the server.
     socket.on('disconnect', () => {
         console.log(`⚡: usuario desconectado!`);
 
