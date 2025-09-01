@@ -1,6 +1,9 @@
 # Project details
 
-- Node.js
+|                |Version							|
+|----------------|-------------------------------|
+|NPM          |`11.5.2`            |
+|Node.js          |`22.14.0`|
 
 ## Instructions
 
