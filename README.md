@@ -2,7 +2,7 @@
 
 This project functions as a server for sending and receiving messages in a socket-type chat through private channels. These same channels can be used in any project, as long as they can use a dependency that allows socket connection. In this case, three types of frontend projects were used: Angular, React, and Ionic Angular. A chat can be established between all projects without any problems.
 
-Important note
+## Important note
 
 None of these projects use a database on a server to store messages. Work is currently underway to add this requirement.
 
