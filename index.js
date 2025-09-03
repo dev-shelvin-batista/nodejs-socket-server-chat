@@ -5,6 +5,7 @@ const http = require("http");
 const { Server } = require("socket.io");
 app.use(cors());
 
+// Server configuration
 const server = http.createServer(app);
 const socketIO = new Server(server, {
     cors: { 
@@ -15,29 +16,24 @@ const socketIO = new Server(server, {
 let users = [];
 
 socketIO.on('connection', (socket) => {
-    console.log(`⚡: ${socket.id} usuario conectado!`);
+    console.log(`⚡: ${socket.id} logged-in user!`);
   
     // Send message event
     socket.on(`message`, (data) => {
-        console.log(`⚡: mensaje enviado!`);
+        console.log(`⚡: message sent!`);
         
         socketIO.emit(`messageResponse-${data.to}`, data);
     });
 
     // Event to notify when a user is typing
     socket.on('typing', (data) => {
-        console.log(`⚡: usuario esta escribiendo!`);
+        console.log(`⚡: user is typing!`);
         socketIO.emit(`typingResponse`, data);
     });
 
-    // Event to notify a user that they are logging in to the server.
-    socket.on('newUser', (data) => {
-        console.log(`⚡: usuario conectado!`);
-    });
-
-    // Evento de notificar un usuario que inicias sesión
+    // Event to notify a user that you are logging in
     socket.on('newUserLogin', (data) => {
-        console.log(`⚡: usuario conectado!`);
+        console.log(`⚡: logged-in user!`);
         
         const exist = users.find((user) => user.socketID === data.socketID);
         if(!exist){
@@ -68,7 +64,7 @@ socketIO.on('connection', (socket) => {
     });
 });
 
-
+// Start server
 server.listen(4000, () => {
   console.log("listening on *:4000");
 });
