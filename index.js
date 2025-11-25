@@ -46,7 +46,7 @@ socketIO.on('connection', (socket) => {
     
     // Event to notify a user who logs out
     socket.on('disconnectUser', (data) => {
-        console.log(`⚡: usuario desconectado!`);
+        console.log(`⚡: user offline!`);
         const user = users.find((user) => user.socketID === data.socketID);
         if(user){
             user.online = false;
@@ -57,7 +57,7 @@ socketIO.on('connection', (socket) => {
   
     // Event to notify a user who disconnects from the server.
     socket.on('disconnect', () => {
-        console.log(`⚡: usuario desconectado!`);
+        console.log(`⚡: user offline!`);
 
         //users = []
         //socket.disconnect();
