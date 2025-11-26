@@ -33,6 +33,8 @@ To run the frontend project in a Docker container, follow these steps:
 
 - The project already has a Dockerfile that generates the image to create the container. Just create the image with the `docker build -t nodejs-socket-server-chat .` command.
 
-- Create the container from the image created by running the `docker run --rm -p 4000:4000 -p 3000:3000 nodejs-socket-server-chat` command.
+- Create the container from the image created by running the `docker run --rm -p 4000:4000 nodejs-socket-server-chat` command.
 
 - After executing the above command, the container will be active and you will be able to access the socket server in frontend projects from the host using the URL. `http://localhost:4000`.
+
+- You can change the port to be used on the host by modifying the port in the **docker run** command in the **-p** option.

@@ -12,7 +12,6 @@ RUN npm install
 
 # Expose the port Socket server
 EXPOSE 4000
-EXPOSE 3000
 
 # Command to run when the container starts
 CMD ["npm", "run", "start"]
